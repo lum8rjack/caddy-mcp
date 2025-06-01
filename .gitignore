@@ -1,0 +1,13 @@
+# Ignore compiled files
+caddy-mcp
+caddy
+
+# Ignore config files
+Caddyfile
+*.json
+*.yaml
+*.yml
+*.conf
+
+# Ignore model files
+Modelfile
