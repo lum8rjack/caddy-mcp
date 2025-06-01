@@ -77,5 +77,36 @@ A sample `Caddyfile` to test with that exposed the admin API:
 }
 ```
 
+## Adding Additional Caddy Modules
+
+If you are using a custom-built version of Caddy with extra modules (for example, the Cloudflare DNS module), you need to add the corresponding Go module to your project. This ensures the MCP server can work with your custom Caddy build.
+
+**Steps:**
+
+1. **Add the module import to `main.go`:**
+   
+   For example, to add the Cloudflare DNS module, add the following import (anywhere among the imports, typically with other Caddy modules):
+   
+   ```go
+   import _ "github.com/caddy-dns/cloudflare"
+   ```
+
+2. **Update dependencies:**
+   
+   Run:
+   ```sh
+   go mod tidy
+   ```
+
+3. **Rebuild the server:**
+   
+   ```sh
+   make
+   # or
+   go build -o caddy-mcp .
+   ```
+
+This process can be repeated for any other Caddy modules you need. For a list of official and community modules, see the [Caddy Modules Directory](https://caddyserver.com/docs/modules/).
+
 
 
